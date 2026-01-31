@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Call Fraud Detector</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #22c55e;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>📞 AI Call Fraud Detector</h1>
+<p>Detect fraud calls using AI logic</p>
+
+<button onclick="analyzeCall()">Analyze Sample Call</button>
+
+<div id="result"></div>
+
+<script>
+function analyzeCall() {
+  fetch("https://YOUR-BACKEND-URL.onrender.com/analyze", {
+    method: "POST"
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("result").innerHTML =
+      `<p>${data.transcript}</p><h2>${data.result}</h2>`;
+  });
+}
+</script>
+
+</body>
+</html>
